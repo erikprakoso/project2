@@ -7,6 +7,7 @@ class Dashboard extends CI_Controller
     {
         $data['name'] = $this->session->userdata('name');
         $data['main_view'] = 'dashboard/index';
+        $data['title'] = 'Ship - Dashboard';
         $this->load->view('template', $data);
     }
 }
