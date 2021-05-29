@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Kapal</h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
+                                    <h6 class="font-extrabold mb-0"><?= $count['kapal']; ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Syahbandar</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                                    <h6 class="font-extrabold mb-0"><?= $count['syahbandar']; ?></h6>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Admin</h6>
-                                    <h6 class="font-extrabold mb-0">80.000</h6>
+                                    <h6 class="font-extrabold mb-0"><?= $count['users']; ?></h6>
                                 </div>
                             </div>
                         </div>
