@@ -12,7 +12,6 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Ship - Admin';
-        $data['name'] = $this->session->userdata('name');
         $data['admin'] = $this->admin->get_all();
         $data['main_view'] = 'admin/index';
         $this->load->view('template', $data);

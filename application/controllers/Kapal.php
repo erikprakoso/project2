@@ -13,7 +13,6 @@ class Kapal extends CI_Controller
     public function index()
     {
         $data['title'] = 'Ship - Kapal';
-        $data['name'] = $this->session->userdata('name');
         $data['kapal'] = $this->kapal->get_all();
         $data['main_view'] = 'kapal/index';
         $this->load->view('template', $data);
@@ -23,7 +22,6 @@ class Kapal extends CI_Controller
     {
         $data['title'] = 'Ship - Tambah Kapal';
         $data['main_view'] = 'kapal/tambah';
-        $data['name'] = $this->session->userdata('name');
         $this->form_validation->set_rules('kode_kapal', 'Kode Kapal', 'required|trim|is_unique[kapal.kode]');
         $this->form_validation->set_rules('syahbandar', 'Syahbandar', 'required|trim');
         $this->form_validation->set_rules('psatu', 'L1', 'required|trim');
@@ -89,7 +87,6 @@ class Kapal extends CI_Controller
         $this->form_validation->set_rules('lebar_kapal', 'B', 'required|trim');
         $this->form_validation->set_rules('tinggi_kapal', 'H', 'required|trim');
         if ($this->form_validation->run() == FALSE) {
-            $data['name'] = $this->session->userdata('name');
             $data['title'] = 'Ubah Kapal';
             $data['main_view'] = 'kapal/ubah';
             $data['kapal'] = $this->kapal->getByKode($kode);
@@ -132,5 +129,13 @@ class Kapal extends CI_Controller
             $this->session->set_flashdata('info', $msg);
             redirect('kapal');
         }
+    }
+
+    public function getAjax($kode = null)
+    {
+        $kapal = $this->db->get_where('kapal', ['kode' => $kode])->row();
+        $kapal->foto = base_url('assets/images/') . $kapal->foto;
+        $kapal = json_encode($kapal);
+        echo $kapal;
     }
 }

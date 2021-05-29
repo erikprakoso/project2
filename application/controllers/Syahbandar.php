@@ -12,7 +12,6 @@ class Syahbandar extends CI_Controller
     public function index()
     {
         $data['title'] = 'Ship - Syahbandar';
-        $data['name'] = $this->session->userdata('name');
         $data['syahbandar'] = $this->syahbandar->get_all();
         $data['main_view'] = 'syahbandar/index';
         $this->load->view('template', $data);
