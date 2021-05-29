@@ -9,6 +9,7 @@ class Logout extends CI_Controller
         $this->session->unset_userdata('name');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('logged_in');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Selamat, Anda berhasil keluar.
