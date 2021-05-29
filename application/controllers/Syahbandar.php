@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Syahbandar extends CI_Controller
+class Syahbandar extends MY_Controller
 {
     public function __construct()
     {

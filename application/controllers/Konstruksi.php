@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Konstruksi extends CI_Controller
+class Konstruksi extends MY_Controller
 {
 
     private $array_kapal = [];
