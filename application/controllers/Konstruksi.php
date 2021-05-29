@@ -96,6 +96,7 @@ class Konstruksi extends MY_Controller
     public function hapus($id = null)
     {
         if (!$id) return show_404();
+        $this->db->delete('detail_konstruksi', ['id' => $id]);
         $this->db->delete('konstruksi', ['id' => $id]);
         $this->session->set_flashdata('info', 'Berhasil dihapus');
         redirect('konstruksi');
