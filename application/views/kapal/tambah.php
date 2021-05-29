@@ -44,7 +44,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="syahbandar">Syahbandar</label>
-                                    <?php echo form_dropdown('syahbandar', $syahbandar, set_value('syahbandar'), ['class' => 'form-control', 'id' => 'supllier']) ?>
+                                    <?php if ($syahbandar) : ?>
+                                        <?php echo form_dropdown('syahbandar', $syahbandar, set_value('syahbandar'), ['class' => 'form-control', 'id' => 'supllier']) ?>
+                                    <?php else : ?>
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Silahkan buat Syahbandar</option>
+                                        </select>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama-kapal">Nama Kapal</label>

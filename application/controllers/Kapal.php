@@ -20,6 +20,7 @@ class Kapal extends MY_Controller
 
     public function tambah()
     {
+        $option_syahbandar = [];
         $data['title'] = 'Ship - Tambah Kapal';
         $data['main_view'] = 'kapal/tambah';
         $this->form_validation->set_rules('kode_kapal', 'Kode Kapal', 'required|trim|is_unique[kapal.kode]');

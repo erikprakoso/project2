@@ -62,7 +62,7 @@
                                 <td><img src="<?= base_url('assets/images/') . $o->foto; ?>" width="100" class=""></td>
                                 <td>
                                     <a href="<?php echo site_url('kapal/ubah/') . $o->kode; ?>" class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i></a>
-                                    <a href="<?php echo site_url('kapal/hapus/') . $o->kode; ?>" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></a>
+                                    <a href="<?php echo site_url('kapal/hapus/') . $o->kode; ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>

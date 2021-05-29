@@ -93,7 +93,7 @@
                                 <td><?= $s['telp']; ?></td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $s['id']; ?>" title="Edit"><i class="fas fa-pencil-alt"></i></button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $s['id']; ?>" class="btn btn-primary" title="Delete"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $s['id']; ?>" class="btn btn-primary" title="Delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <!-- Modal Edit -->
