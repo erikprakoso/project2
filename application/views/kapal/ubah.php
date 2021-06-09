@@ -51,19 +51,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="psatu">L1</label>
-                                    <input type="number" value="<?php echo set_value('psatu', $kapal->psatu) ?>" name="psatu" id="psatu" class="form-control">
+                                    <input type="text" value="<?php echo set_value('psatu', $kapal->psatu) ?>" name="psatu" id="psatu" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="pdua">L2</label>
-                                    <input type="number" value="<?php echo set_value('pdua', $kapal->pdua) ?>" name="pdua" id="pdua" class="form-control">
+                                    <input type="text" value="<?php echo set_value('pdua', $kapal->pdua) ?>" name="pdua" id="pdua" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="lebar_kapal">B</label>
-                                    <input type="number" value="<?php echo set_value('lebar_kapal', $kapal->lebar_kapal) ?>" name="lebar_kapal" id="lebar_kapal" class="form-control">
+                                    <input type="text" value="<?php echo set_value('lebar_kapal', $kapal->lebar_kapal) ?>" name="lebar_kapal" id="lebar_kapal" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="tinggi_kapal">H</label>
-                                    <input type="number" value="<?php echo set_value('tinggi_kapal', $kapal->tinggi_kapal) ?>" name="tinggi_kapal" id="tinggi_kapal" class="form-control">
+                                    <input type="text" value="<?php echo set_value('tinggi_kapal', $kapal->tinggi_kapal) ?>" name="tinggi_kapal" id="tinggi_kapal" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="foto">Foto</label>

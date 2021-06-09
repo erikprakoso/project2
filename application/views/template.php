@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/app.css">
     <link rel="shortcut icon" href="<?= base_url('assets/'); ?>images/favicon.svg" type="image/x-icon">
 
-    <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendors/simple-datatables/style.css">
+    <!-- <link rel="stylesheet" href="<?= base_url('assets/'); ?>vendors/simple-datatables/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 </head>
 
 <body>
@@ -132,11 +134,26 @@
     <script src="<?= base_url('assets/'); ?>vendors/fontawesome/all.min.js"></script>
     <script src="<?= base_url('assets/'); ?>vendors/jquery/jquery.min.js"></script>
 
-    <script src="<?= base_url('assets/'); ?>vendors/simple-datatables/simple-datatables.js"></script>
+    <!-- <script src="<?= base_url('assets/'); ?>vendors/simple-datatables/simple-datatables.js"></script> -->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
     <script>
-        // Simple Datatable
-        let table1 = document.querySelector('#table1');
-        let dataTable = new simpleDatatables.DataTable(table1);
+        $(document).ready(function() {
+            $('#table1').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
     </script>
 
     <script>
@@ -199,9 +216,9 @@
                     <td>${data.kode}</td>
                     <td>${data.nama_kapal}</td>
                     <td><img src="${data.foto}" width="50"/></td>
-                    <td>Rp.${data.psatu}</td>
-                    <td width="100"><input data-psatu="${data.psatu}" data-kode="${data.kode}" type="number" class="form-control jumlah" value="1" min="1" /></td>
-                    <td>Rp.${data.psatu}</td>
+                    <td>${data.psatu}</td>
+                    <td>${data.pdua}</td>
+                    <td>${data.psatu}</td>
                 </tr>
                 `;
                 arraykapal.push({
@@ -213,7 +230,7 @@
                 arraykapal.forEach(val => grand_total = grand_total + parseInt(val.total));
                 $('.form-kapal table tbody').append(html)
                 $('.form-kapal table tfoot').show();
-                $('.form-kapal .grand-total').html(`<h4>Rp.${grand_total}</h4>`)
+                $('.form-kapal .grand-total').html(`<h4>${grand_total}</h4>`)
                 $('.form-kapal #data_kapal').val(JSON.stringify(arraykapal));
             })
         })
@@ -229,7 +246,7 @@
             let jumlah = $(this).val();
             let psatu = $(this).data('psatu');
             let total = psatu * jumlah;
-            $(`.form-kapal #${kode} td:last`).html(`Rp.${total}`)
+            $(`.form-kapal #${kode} td:last`).html(`${total}`)
             objIndex = arraykapal.findIndex((obj => obj.kode == kode));
             arraykapal[objIndex].jumlah = jumlah;
             arraykapal[objIndex].total = total;
@@ -244,7 +261,7 @@
                 $('.form-kapal table tfoot').hide();
                 $('.form-kapal table tbody .item-kosong').show();
             }
-            $('.form-kapal .grand-total').html(`<h4>Rp.${grand_total}</h4>`)
+            $('.form-kapal .grand-total').html(`<h4>${grand_total}</h4>`)
         }
         $('.form-kapal').on('submit', function(e) {
             e.preventDefault();

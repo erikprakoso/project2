@@ -32,7 +32,7 @@
                 </div>
             <?php endif; ?>
             <div class="card-body">
-                <table class="table table-striped" id="table1">
+                <table class="display nowrap" style="width:100%" id="table1">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -42,6 +42,7 @@
                             <th>L2</th>
                             <th>B</th>
                             <th>H</th>
+                            <th>L</th>
                             <th>Syahbandar</th>
                             <th>Gambar</th>
                             <th>Aksi</th>
@@ -58,6 +59,7 @@
                                 <td><?= $o->pdua; ?></td>
                                 <td><?= $o->lebar_kapal; ?></td>
                                 <td><?= $o->tinggi_kapal; ?></td>
+                                <td><?= $o->result; ?></td>
                                 <td><?= $o->syahbandar_id; ?></td>
                                 <td><img src="<?= base_url('assets/images/') . $o->foto; ?>" width="100" class=""></td>
                                 <td>

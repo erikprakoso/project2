@@ -26,7 +26,7 @@ class Kapal extends MY_Controller
         $this->form_validation->set_rules('kode_kapal', 'Kode Kapal', 'required|trim|is_unique[kapal.kode]');
         $this->form_validation->set_rules('syahbandar', 'Syahbandar', 'required|trim');
         $this->form_validation->set_rules('psatu', 'L1', 'required|trim');
-        $this->form_validation->set_rules('pdua', 'L2', 'required|trim|numeric');
+        $this->form_validation->set_rules('pdua', 'L2', 'required|trim');
         $this->form_validation->set_rules('lebar_kapal', 'B', 'required|trim');
         $this->form_validation->set_rules('tinggi_kapal', 'H', 'required|trim');
         if ($this->form_validation->run() == FALSE) {
@@ -49,6 +49,9 @@ class Kapal extends MY_Controller
             $this->session->set_flashdata('info', $error);
             return redirect('kapal/tambah');
         }
+
+        $result = (floatval(str_replace(',', '.', $this->input->post('psatu'))) + floatval(str_replace(',', '.', $this->input->post('pdua')))) / 2;
+        $result = str_replace('.', ',', $result);
         $data_kapal = [
             'kode' => $this->input->post('kode_kapal'),
             'syahbandar_id' => $this->input->post('syahbandar'),
@@ -58,6 +61,7 @@ class Kapal extends MY_Controller
             'lebar_kapal' => $this->input->post('lebar_kapal'),
             'tinggi_kapal' => $this->input->post('tinggi_kapal'),
             'foto' => $this->upload->data('file_name'),
+            'result' => $result
         ];
         $tambah = $this->kapal->create($data_kapal);
         $msg = $tambah ? 'Berhasil ditambah' : 'Gagal ditambah';
@@ -84,7 +88,7 @@ class Kapal extends MY_Controller
         // $this->form_validation->set_rules('kode_kapal', 'Kode Kapal', 'required|trim|is_unique[kapal.kode]');
         $this->form_validation->set_rules('syahbandar', 'Syahbandar', 'required|trim');
         $this->form_validation->set_rules('psatu', 'L1', 'required|trim');
-        $this->form_validation->set_rules('pdua', 'L2', 'required|trim|numeric');
+        $this->form_validation->set_rules('pdua', 'L2', 'required|trim');
         $this->form_validation->set_rules('lebar_kapal', 'B', 'required|trim');
         $this->form_validation->set_rules('tinggi_kapal', 'H', 'required|trim');
         if ($this->form_validation->run() == FALSE) {
@@ -98,6 +102,8 @@ class Kapal extends MY_Controller
             $data['syahbandar'] = $option_syahbandar;
             $this->load->view('template', $data);
         } else {
+            $result = (floatval(str_replace(',', '.', $this->input->post('psatu'))) + floatval(str_replace(',', '.', $this->input->post('pdua')))) / 2;
+            $result = str_replace('.', ',', $result);
             $data_kapal = [
                 // 'kode' => $this->input->post('kode_kapal'),
                 'syahbandar_id' => $this->input->post('syahbandar'),
@@ -106,6 +112,7 @@ class Kapal extends MY_Controller
                 'pdua' => $this->input->post('pdua'),
                 'lebar_kapal' => $this->input->post('lebar_kapal'),
                 'tinggi_kapal' => $this->input->post('tinggi_kapal'),
+                'result' => $result
             ];
             if ($_FILES['foto']['error'] !== 4) {
                 $config = [

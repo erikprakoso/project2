@@ -57,24 +57,20 @@
                                     <input type="text" class="form-control" id="nama-kapal" name="nama">
                                 </div>
                                 <div class="form-group">
-                                    <label for="nama-kapal">Kode Kapal</label>
-                                    <input type="text" class="form-control" id="nama-kapal" name="nama">
-                                </div>
-                                <div class="form-group">
                                     <label for="psatu">L1</label>
-                                    <input type="number" class="form-control" name="psatu" id="psatu">
+                                    <input type="text" class="form-control" name="psatu" id="psatu">
                                 </div>
                                 <div class="form-group">
                                     <label for="pdua">L2</label>
-                                    <input type="number" class="form-control" name="pdua" id="pdua">
+                                    <input type="text" class="form-control" name="pdua" id="pdua">
                                 </div>
                                 <div class="form-group">
                                     <label for="lebar_kapal">B</label>
-                                    <input type="number" class="form-control" name="lebar_kapal" id="lebar_kapal">
+                                    <input type="text" class="form-control" name="lebar_kapal" id="lebar_kapal">
                                 </div>
                                 <div class="form-group">
                                     <label for="tinggi_kapal">H</label>
-                                    <input type="number" class="form-control" name="tinggi_kapal" id="tinggi_kapal">
+                                    <input type="text" class="form-control" name="tinggi_kapal" id="tinggi_kapal">
                                 </div>
                                 <div class="form-group">
                                     <label for="foto">Foto</label>
