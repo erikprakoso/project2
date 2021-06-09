@@ -35,15 +35,15 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?= base_url('admin/tambah'); ?>" method="POST">
+                                <form action="<?= base_url('usermanagement/tambah'); ?>" method="POST">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="basicInput">Nama</label>
                                             <input type="text" class="form-control" id="name" name="name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="basicInput">Username</label>
-                                            <input type="text" class="form-control" id="username" name="username">
+                                            <label for="basicInput">Email</label>
+                                            <input type="text" class="form-control" id="email" name="email">
                                         </div>
                                         <div class="form-group">
                                             <label for="basicInput">Password</label>
@@ -71,21 +71,25 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Role</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
-                        foreach ($admin as $s) : ?>
+                        foreach ($usermanagement as $s) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td><?= $s['name']; ?></td>
-                                <td><?= $s['username']; ?></td>
+                                <td><?= $s['email']; ?></td>
+                                <td><?= $s['status']; ?></td>
+                                <td><?= $s['role']; ?></td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $s['id']; ?>" title="Edit"><i class="fas fa-pencil-alt"></i></button>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $s['id']; ?>" class="btn btn-primary" title="Delete"><i class="fas fa-trash"></i></button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $s['id']; ?>" class="btn btn-primary" title="Delete"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                             <!-- Modal Edit -->
@@ -93,19 +97,46 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: #435ebe;">
-                                            <h5 class="modal-title" id="editModalLabel" style="color: white;">Edit Admin</h5>
+                                            <h5 class="modal-title" id="editModalLabel" style="color: white;">Edit User</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="<?= base_url('admin/edit'); ?>" method="POST">
+                                            <form action="<?= base_url('usermanagement/edit'); ?>" method="POST">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="basicInput">Nama</label>
                                                         <input type="text" class="form-control" id="name" name="name" value="<?= $s['name']; ?>">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="basicInput">Username</label>
-                                                        <input type="text" class="form-control" id="username" name="username" value="<?= $s['username']; ?>">
+                                                        <label for="basicInput">Email</label>
+                                                        <input type="text" class="form-control" id="email" name="email" value="<?= $s['email']; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="basicInput">Status</label>
+                                                        <select class="form-select" aria-label="Default select example" name="status">
+                                                            <?php if ($s['status'] === '1') : ?>
+                                                                <option value="1" selected>Aktif</option>
+                                                                <option value="0">Tidak Aktif</option>
+                                                            <?php else : ?>
+                                                                <option value="1">Aktif</option>
+                                                                <option value="0" selected>Tidak Aktif</option>
+                                                            <?php endif; ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="basicInput">Role</label>
+                                                        <select class="form-select" aria-label="Default select example" name="role">
+                                                            <?php if ($s['role'] === 'Admin') : ?>
+                                                                <option value="Admin" selected>Admin</option>
+                                                                <option value="User">User</option>
+                                                            <?php elseif ($s['role'] === 'User') : ?>
+                                                                <option value="Admin">Admin</option>
+                                                                <option value="User" selected>User</option>
+                                                            <?php else : ?>
+                                                                <option value="Admin">Admin</option>
+                                                                <option value="User">User</option>
+                                                            <?php endif; ?>
+                                                        </select>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="basicInput">Password</label>
@@ -129,19 +160,37 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header" style="background-color: #435ebe;">
-                                            <h5 class="modal-title" id="deleteModalLabel" style="color: white;">Delete Admin</h5>
+                                            <h5 class="modal-title" id="deleteModalLabel" style="color: white;">Delete User</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="<?= base_url('admin/delete'); ?>" method="POST">
+                                            <form action="<?= base_url('usermanagement/delete'); ?>" method="POST">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="basicInput">Nama</label>
                                                         <input type="text" class="form-control" id="name" name="name" value="<?= $s['name']; ?>" readonly>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="basicInput">Username</label>
-                                                        <input type="text" class="form-control" id="username" name="username" value="<?= $s['username']; ?>" readonly>
+                                                        <label for="basicInput">Email</label>
+                                                        <input type="text" class="form-control" id="email" name="email" value="<?= $s['email']; ?>" readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="basicInput">Status</label>
+                                                        <?php if ($s['status'] === '1') : ?>
+                                                            <input type="text" class="form-control" id="status" name="status" value="Aktif" readonly>
+                                                        <?php else : ?>
+                                                            <input type="text" class="form-control" id="status" name="status" value="Tidak Aktif" readonly>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="basicInput">Role</label>
+                                                        <?php if ($s['role'] === 'Admin') : ?>
+                                                            <input type="text" class="form-control" id="role" name="role" value="Admin" readonly>
+                                                        <?php elseif ($s['role'] === 'User') : ?>
+                                                            <input type="text" class="form-control" id="role" name="role" value="User" readonly>
+                                                        <?php else : ?>
+                                                            <input type="text" class="form-control" id="role" name="role" value="Tidak ditemukan" readonly>
+                                                        <?php endif; ?>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="basicInput">Password</label>

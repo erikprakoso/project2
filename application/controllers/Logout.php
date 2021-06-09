@@ -7,9 +7,11 @@ class Logout extends CI_Controller
     public function index()
     {
         $this->session->unset_userdata('name');
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('email');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('role');
+        $this->session->unset_userdata('status');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Selamat, Anda berhasil keluar.

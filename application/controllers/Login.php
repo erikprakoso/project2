@@ -12,8 +12,8 @@ class Login extends CI_Controller
     public function index()
     {
         $this->form_validation->set_rules(
-            'inputUsername',
-            'Usernmae',
+            'inputEmail',
+            'Email',
             'required|trim'
         );
         $this->form_validation->set_rules(
@@ -26,7 +26,7 @@ class Login extends CI_Controller
             redirect('dashboard');
         } else {
             if ($this->form_validation->run() == false) {
-                $data['title'] = 'Ship - Login';
+                $data['title'] = 'Login';
                 $this->load->view('login/index', $data);
             } else {
                 $this->_login();
@@ -36,31 +36,33 @@ class Login extends CI_Controller
 
     private function _login()
     {
-        $username = $this->input->post('inputUsername');
+        $email = $this->input->post('inputEmail');
         $password = $this->input->post('inputPassword');
 
-        $user = $this->login->get_user_by_username($username);
+        $user = $this->login->get_user_by_email($email);
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'logged_in' => true,
                     'name' => $user['name'],
-                    'username' => $user['username'],
-                    'user_id' => $user['id']
+                    'email' => $user['email'],
+                    'user_id' => $user['id'],
+                    'role' => $user['role'],
+                    'status' => $user['status']
                 ];
                 $this->session->set_userdata($data);
                 redirect('dashboard');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
                 Masukkan Password yang benar.
-		  </div>');
+          </div>');
                 redirect('/');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-			Username belum terdaftar.
-		  </div>');
+        	Email belum terdaftar atau Email belum diaktivasi.
+          </div>');
             redirect('/');
         }
     }

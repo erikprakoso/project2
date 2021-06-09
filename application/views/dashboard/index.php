@@ -11,56 +11,9 @@
     <section class="row">
         <div class="col-12 col-lg-9">
             <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon purple">
-                                        <i class="fas fa-ship" style="color: white;"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Kapal</h6>
-                                    <h6 class="font-extrabold mb-0"><?= $count['kapal']; ?></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon blue">
-                                        <i class="iconly-boldUser"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Syahbandar</h6>
-                                    <h6 class="font-extrabold mb-0"><?= $count['syahbandar']; ?></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon green">
-                                        <i class="iconly-boldAdd-User"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Admin</h6>
-                                    <h6 class="font-extrabold mb-0"><?= $count['users']; ?></h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="justify-content-center">
+                    <iframe style="height: 100vh; width: 80vw;" src=" https://www.google.com/search?igu=1">
+                    </iframe>
                 </div>
             </div>
         </div>

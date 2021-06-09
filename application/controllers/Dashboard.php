@@ -7,8 +7,7 @@ class Dashboard extends MY_Controller
     {
         $this->load->model('Dashboard_model');
         $data['main_view'] = 'dashboard/index';
-        $data['title'] = 'Ship - Dashboard';
-        $data['count'] = $this->Dashboard_model->get_all_count();
+        $data['title'] = 'Dashboard';
         $this->load->view('template', $data);
     }
 }
