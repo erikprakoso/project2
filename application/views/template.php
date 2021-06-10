@@ -29,7 +29,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="logo">
                             <!-- <a href="index.html"><img src="<?= base_url('assets/'); ?>images/logo/logo.png" alt="Logo" srcset=""></a> -->
-                            <h3>Ship Dashboard</h3>
+                            <h3><?= $title; ?></h3>
                             <span class="badge bg-primary"><?= $this->session->userdata('name'); ?></span>
                         </div>
                         <div class="toggler">
@@ -48,9 +48,8 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?php echo active_link(['kapal', 'kapal/tambah']) ?> has-sub">
+                        <!-- <li class="sidebar-item <?php echo active_link(['kapal', 'kapal/tambah']) ?> has-sub">
                             <a href="#" class='sidebar-link'>
-                                <!-- <i class="bi bi-stack"></i> -->
                                 <i class="fas fa-ship"></i>
                                 <span>Kapal</span>
                             </a>
@@ -84,7 +83,7 @@
                                     <a href="<?= base_url('konstruksi/tambah'); ?>">Tambah Konstruksi</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="sidebar-item <?php echo active_link('usermanagement') ?>">
                             <a href="<?= base_url('usermanagement'); ?>" class='sidebar-link'>

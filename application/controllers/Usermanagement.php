@@ -21,6 +21,7 @@ class Usermanagement extends MY_Controller
     {
         $data = [
             'name' => $this->input->post('name'),
+            'username' => $this->input->post('username'),
             'email' => $this->input->post('email'),
             'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
         ];
@@ -34,6 +35,7 @@ class Usermanagement extends MY_Controller
     {
         $data = [
             'name' => $this->input->post('name'),
+            'username' => $this->input->post('username'),
             'email' => $this->input->post('email'),
             'status' => $this->input->post('status'),
             'role' => $this->input->post('role'),

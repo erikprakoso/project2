@@ -12,11 +12,6 @@ class Login extends CI_Controller
     public function index()
     {
         $this->form_validation->set_rules(
-            'inputEmail',
-            'Email',
-            'required|trim'
-        );
-        $this->form_validation->set_rules(
             'inputPassword',
             'Password',
             'required|trim|min_length[5]'
@@ -36,16 +31,22 @@ class Login extends CI_Controller
 
     private function _login()
     {
-        $email = $this->input->post('inputEmail');
-        $password = $this->input->post('inputPassword');
-
-        $user = $this->login->get_user_by_email($email);
+        if ($this->input->post('userEmail') === '1') {
+            $username = $this->input->post('inputUsername');
+            $password = $this->input->post('inputPassword');
+            $user = $this->login->get_user_by_username($username);
+        } else {
+            $email = $this->input->post('inputEmail');
+            $password = $this->input->post('inputPassword');
+            $user = $this->login->get_user_by_email($email);
+        }
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'logged_in' => true,
                     'name' => $user['name'],
+                    'username' => $user['username'],
                     'email' => $user['email'],
                     'user_id' => $user['id'],
                     'role' => $user['role'],
@@ -61,7 +62,7 @@ class Login extends CI_Controller
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-        	Email belum terdaftar atau Email belum diaktivasi.
+        	Email/Username belum terdaftar atau Email/Username belum diaktivasi.
           </div>');
             redirect('/');
         }

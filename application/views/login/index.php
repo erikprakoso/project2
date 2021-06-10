@@ -27,11 +27,24 @@
                     <?= $this->session->flashdata('message'); ?>
                     <form action="<?= base_url('login'); ?>" method="POST">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Email" name="inputEmail" id="inputEmail">
+                            <select class="form-select" aria-label="Default select example" id="userEmail" name="userEmail" onchange="showDiv(this)">
+                                <option value="1">Username</option>
+                                <option value="2">Email</option>
+                            </select>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4" id="username">
+                            <input type="text" class="form-control form-control-xl" placeholder="Username" name="inputUsername" id="inputUsername">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                             <?= form_error('inputUsername', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4" style="display:none" id="email">
+                            <input type="text" class="form-control form-control-xl" placeholder="Email" name="inputEmail" id="inputEmail">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <?= form_error('inputEmail', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-xl" placeholder="Password" name="inputPassword" id="inputPassword">
@@ -63,6 +76,18 @@
         </div>
 
     </div>
+
+    <script type="text/javascript">
+        function showDiv(select) {
+            if (select.value == 1) {
+                document.getElementById('username').style.display = "block";
+                document.getElementById('email').style.display = "none";
+            } else {
+                document.getElementById('username').style.display = "none";
+                document.getElementById('email').style.display = "block";
+            }
+        }
+    </script>
 </body>
 
 </html>

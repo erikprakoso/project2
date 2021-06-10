@@ -42,6 +42,10 @@
                                             <input type="text" class="form-control" id="name" name="name">
                                         </div>
                                         <div class="form-group">
+                                            <label for="basicInput">Username</label>
+                                            <input type="text" class="form-control" id="username" name="username">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="basicInput">Email</label>
                                             <input type="text" class="form-control" id="email" name="email">
                                         </div>
@@ -71,6 +75,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>Username</th>
                             <th>Email</th>
                             <th>Status</th>
                             <th>Role</th>
@@ -84,6 +89,7 @@
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td><?= $s['name']; ?></td>
+                                <td><?= $s['username']; ?></td>
                                 <td><?= $s['email']; ?></td>
                                 <td><?= $s['status']; ?></td>
                                 <td><?= $s['role']; ?></td>
@@ -106,6 +112,10 @@
                                                     <div class="form-group">
                                                         <label for="basicInput">Nama</label>
                                                         <input type="text" class="form-control" id="name" name="name" value="<?= $s['name']; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="basicInput">Username</label>
+                                                        <input type="text" class="form-control" id="username" name="username" value="<?= $s['username']; ?>">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="basicInput">Email</label>

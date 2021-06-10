@@ -17,6 +17,11 @@ class Register extends CI_Controller
             'required|trim'
         );
         $this->form_validation->set_rules(
+            'inputUsername',
+            'Username',
+            'required|trim'
+        );
+        $this->form_validation->set_rules(
             'inputEmail',
             'Email',
             'required|trim|valid_email|is_unique[users.email]'
@@ -43,6 +48,7 @@ class Register extends CI_Controller
     {
         $data = [
             'name' => htmlspecialchars($this->input->post('inputName', true)),
+            'username' => htmlspecialchars($this->input->post('inputUsername', true)),
             'email' => htmlspecialchars($this->input->post('inputEmail', true)),
             'password' => password_hash($this->input->post('inputPassword1'), PASSWORD_DEFAULT)
         ];
