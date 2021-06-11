@@ -48,50 +48,21 @@
                             </a>
                         </li>
 
-                        <!-- <li class="sidebar-item <?php echo active_link(['kapal', 'kapal/tambah']) ?> has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="fas fa-ship"></i>
-                                <span>Kapal</span>
-                            </a>
-                            <ul class="submenu <?php echo active_link(['kapal', 'kapal/tambah'], 'active') ?>">
-                                <li class="submenu-item <?php echo active_link('kapal') ?>">
-                                    <a href="<?= base_url('kapal'); ?>">Data Kapal</a>
-                                </li>
-                                <li class="submenu-item <?php echo active_link('kapal/tambah') ?>">
-                                    <a href="<?= base_url('kapal/tambah'); ?>">Tambah Kapal</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-item <?php echo active_link('syahbandar') ?>">
-                            <a href="<?= base_url('syahbandar'); ?>" class='sidebar-link'>
+                        <li class="sidebar-item <?php echo active_link('matakuliah') ?>">
+                            <a href="<?= base_url('matakuliah'); ?>" class='sidebar-link'>
                                 <i class="bi bi-building"></i>
-                                <span>Data Syahbandar</span>
+                                <span>Mata Kuliah</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?php echo active_link(['konstruksi', 'konstruksi/tambah']) ?> has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-stack"></i>
-                                <span>Konstruksi</span>
-                            </a>
-                            <ul class="submenu <?php echo active_link(['konstruksi', 'konstruksi/tambah'], 'active') ?>">
-                                <li class="submenu-item <?php echo active_link('konstruksi') ?>">
-                                    <a href="<?= base_url('konstruksi'); ?>">Data Konstruksi</a>
-                                </li>
-                                <li class="submenu-item <?php echo active_link('konstruksi/tambah') ?>">
-                                    <a href="<?= base_url('konstruksi/tambah'); ?>">Tambah Konstruksi</a>
-                                </li>
-                            </ul>
-                        </li> -->
-
-                        <li class="sidebar-item <?php echo active_link('usermanagement') ?>">
-                            <a href="<?= base_url('usermanagement'); ?>" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>User Management</span>
-                            </a>
-                        </li>
-
+                        <?php if ($this->session->userdata('role')  === 'Admin') : ?>
+                            <li class="sidebar-item <?php echo active_link('usermanagement') ?>">
+                                <a href="<?= base_url('usermanagement'); ?>" class='sidebar-link'>
+                                    <i class="bi bi-people-fill"></i>
+                                    <span>User Management</span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
                         <li class="sidebar-item  ">
                             <a href="<?= base_url('logout'); ?>" class='sidebar-link'>
                                 <!-- <i class="bi bi-cash"></i> -->
